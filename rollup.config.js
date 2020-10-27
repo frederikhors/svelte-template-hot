@@ -57,9 +57,9 @@ export default {
   input: 'src/main.js',
   output: {
     sourcemap: true,
-    format: 'iife',
-    name: 'app',
-    file: 'public/build/bundle.js',
+    format: 'esm',
+    dir: 'final',
+    entryFileNames: 'bundle.js'
   },
   plugins: [
     svelte({
@@ -70,7 +70,7 @@ export default {
       // NOTE when hot option is enabled, a blank file will be written to
       // avoid CSS rules conflicting with HMR injected ones
       css: css => {
-        css.write(isNollup ? 'build/bundle.css' : 'bundle.css')
+        css.write(isNollup ? 'final/bundle.css' : 'bundle.css')
       },
       hot: isHot && {
         // Optimistic will try to recover from runtime
